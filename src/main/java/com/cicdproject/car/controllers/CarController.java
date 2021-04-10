@@ -62,8 +62,7 @@ public class CarController {
             return ResponseEntity.status(HttpStatus.OK).build();
         } else {
             car.setId(id);
-            Car SavedCar = carRepo.save(car);
-
+            carRepo.save(car);
             URI location = ServletUriComponentsBuilder
                     .fromCurrentRequest().path("{id}")
                     .buildAndExpand(car.getId()).toUri();
