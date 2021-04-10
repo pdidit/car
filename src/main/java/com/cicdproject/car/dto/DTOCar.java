@@ -105,7 +105,4 @@ public class DTOCar {
     public void setServiceStatus(ServiceStatus serviceStatus) {
         this.serviceStatus = serviceStatus;
     }
-
-    public DTOCar() {
-    }
 }
