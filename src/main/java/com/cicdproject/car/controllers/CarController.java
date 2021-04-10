@@ -2,6 +2,7 @@ package com.cicdproject.car.controllers;
 
 import com.cicdproject.car.dao.CarRepo;
 import com.cicdproject.car.dto.Car;
+import com.cicdproject.car.dto.DTOCar;
 import com.cicdproject.car.dto.ServiceStatus;
 import com.cicdproject.car.exception.CarNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,8 +45,22 @@ public class CarController {
     }
 
     @PostMapping("cars")
-    public ResponseEntity createCar(@RequestBody Car car){
-        Car SavedCar = carRepo.save(car);
+    public ResponseEntity createCar(@RequestBody DTOCar car){
+        Car preCar = new Car();
+
+        preCar.setId(car.getId());
+        preCar.setMake(car.getMake());
+        preCar.setModel(car.getModel());
+        preCar.setYear(car.getYear());
+        preCar.setColour(car.getColour());
+        preCar.setLitre(car.getLitre());
+        preCar.setMileage(car.getMileage());
+        preCar.setPrice(car.getPrice());
+        preCar.setCondition(car.getCondition());
+        preCar.setServiceStatus(car.getServiceStatus());
+        preCar.setSeller(car.getSeller());
+
+        carRepo.save(preCar);
 
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest().path("/{id}")
@@ -54,15 +69,27 @@ public class CarController {
     }
 
     @PutMapping("cars/{id}")
-    public ResponseEntity updateCar(@RequestBody Car car, @PathVariable Integer id) {
+    public ResponseEntity updateCar(@RequestBody DTOCar car, @PathVariable Integer id) {
         Optional<Car> oldCar = carRepo.findById(id);
+        Car preCar = new Car();
+
+        preCar.setId(id);
+        preCar.setMake(car.getMake());
+        preCar.setModel(car.getModel());
+        preCar.setYear(car.getYear());
+        preCar.setColour(car.getColour());
+        preCar.setLitre(car.getLitre());
+        preCar.setMileage(car.getMileage());
+        preCar.setPrice(car.getPrice());
+        preCar.setCondition(car.getCondition());
+        preCar.setServiceStatus(car.getServiceStatus());
+        preCar.setSeller(car.getSeller());
+
         if(oldCar.isPresent()) {
-            car.setId(id);
-            carRepo.save(car);
+            carRepo.save(preCar);
             return ResponseEntity.status(HttpStatus.OK).build();
         } else {
-            car.setId(id);
-            carRepo.save(car);
+            carRepo.save(preCar);
             URI location = ServletUriComponentsBuilder
                     .fromCurrentRequest().path("{id}")
                     .buildAndExpand(car.getId()).toUri();

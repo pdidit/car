@@ -2,54 +2,29 @@ package com.cicdproject.car.dto;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "cars")
-public class Car
-{
+public class DTOCar {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Integer id;
     private String make;
     private String model;
     private int year;
-    @Column(name="color")
     private String colour;
     private double litre;
     private int mileage;
     private double price;
-    @Enumerated(EnumType.STRING)
     private Condition condition;
-    @Enumerated(EnumType.STRING)
     private ServiceStatus serviceStatus;
-    private String seller;
 
-    public ServiceStatus getServiceStatus() {
-        return serviceStatus;
+    public String getSeller() {
+        return seller;
     }
 
-    public void setServiceStatus(ServiceStatus serviceStatus) {
-        this.serviceStatus = serviceStatus;
-    }
-
-
-
-    public Car(Integer id, String make, String model, int year, String colour, double litre, int mileage, double price, Condition condition, ServiceStatus serviceStatus, String seller) {
-        this.id = id;
-        this.make = make;
-        this.model = model;
-        this.year = year;
-        this.colour = colour;
-        this.litre = litre;
-        this.mileage = mileage;
-        this.price = price;
-        this.condition = condition;
-        this.serviceStatus = serviceStatus;
+    public void setSeller(String seller) {
         this.seller = seller;
     }
 
-    public Car() {
-    }
+    private String seller;
 
     public Integer getId() {
         return id;
@@ -92,7 +67,7 @@ public class Car
     }
 
     public double getLitre() {
-        return this.litre;
+        return litre;
     }
 
     public void setLitre(double litre) {
@@ -123,11 +98,14 @@ public class Car
         this.condition = condition;
     }
 
-    public String getSeller() {
-        return seller;
+    public ServiceStatus getServiceStatus() {
+        return serviceStatus;
     }
 
-    public void setSeller(String seller) {
-        this.seller = seller;
+    public void setServiceStatus(ServiceStatus serviceStatus) {
+        this.serviceStatus = serviceStatus;
+    }
+
+    public DTOCar() {
     }
 }
