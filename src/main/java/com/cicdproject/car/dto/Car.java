@@ -20,9 +20,20 @@ public class Car
     private double price;
     @Enumerated(EnumType.STRING)
     private Condition condition;
+    @Enumerated(EnumType.STRING)
+    private ServiceStatus serviceStatus;
+
+    public ServiceStatus getServiceStatus() {
+        return serviceStatus;
+    }
+
+    public void setServiceStatus(ServiceStatus serviceStatus) {
+        this.serviceStatus = serviceStatus;
+    }
+
     private String seller;
 
-    public Car(Integer id, String make, String model, int year, String colour, double litre, int mileage, double price, Condition condition, String seller) {
+    public Car(Integer id, String make, String model, int year, String colour, double litre, int mileage, double price, Condition condition, ServiceStatus serviceStatus, String seller) {
         this.id = id;
         this.make = make;
         this.model = model;
@@ -32,6 +43,7 @@ public class Car
         this.mileage = mileage;
         this.price = price;
         this.condition = condition;
+        this.serviceStatus = serviceStatus;
         this.seller = seller;
     }
 
