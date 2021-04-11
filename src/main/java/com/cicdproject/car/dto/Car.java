@@ -6,7 +6,6 @@ import javax.persistence.*;
 @Table(name = "cars")
 public class Car
 {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -24,15 +23,8 @@ public class Car
     private ServiceStatus serviceStatus;
     private String seller;
 
-    public ServiceStatus getServiceStatus() {
-        return serviceStatus;
+    public Car() {
     }
-
-    public void setServiceStatus(ServiceStatus serviceStatus) {
-        this.serviceStatus = serviceStatus;
-    }
-
-
 
     public Car(Integer id, String make, String model, int year, String colour, double litre, int mileage, double price, Condition condition, ServiceStatus serviceStatus, String seller) {
         this.id = id;
@@ -48,12 +40,7 @@ public class Car
         this.seller = seller;
     }
 
-    public Car() {
-    }
-
-    public Integer getId() {
-        return id;
-    }
+    public Integer getId() { return id; }
 
     public void setId(Integer id) {
         this.id = id;
@@ -129,5 +116,13 @@ public class Car
 
     public void setSeller(String seller) {
         this.seller = seller;
+    }
+
+    public ServiceStatus getServiceStatus() {
+        return serviceStatus;
+    }
+
+    public void setServiceStatus(ServiceStatus serviceStatus) {
+        this.serviceStatus = serviceStatus;
     }
 }
