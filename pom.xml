@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.cicdproject</groupId>
     <artifactId>car</artifactId>
-    <version>0.0.1-RELEASE</version>
+    <version>0.0.2-RELEASE</version>
     <name>car</name>
     <description>This is the car project for the CI/CD project</description>
     <properties>
