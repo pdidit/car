@@ -44,6 +44,8 @@ public class CarController {
             throw new CarNotFoundException("Unable to find the car with id " + id);
     }
 
+
+    // this is the AP
     @PostMapping("/cars")
     public ResponseEntity createCar(@RequestBody DTOCar car){
         Car preCar = new Car();
@@ -112,6 +114,7 @@ public class CarController {
         return carRepo.findByMakeAndModel(make,model);
     }
 
+    // this is the API being implemented.
     @GetMapping("/cars/service/{id}/{mileage}")
     public ResponseEntity serviceCar(@PathVariable Integer id, @PathVariable Integer mileage) {
         return carRepo.findById(id).map(car -> {
