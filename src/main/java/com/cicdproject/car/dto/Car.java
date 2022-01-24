@@ -2,6 +2,9 @@ package com.cicdproject.car.dto;
 
 import javax.persistence.*;
 
+/**
+ * Entity car object.
+ */
 @Entity
 @Table(name = "cars")
 public class Car

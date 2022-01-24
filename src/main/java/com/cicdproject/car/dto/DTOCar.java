@@ -1,9 +1,11 @@
 package com.cicdproject.car.dto;
 
-import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
+/**
+ * DTO Object for transmitting car object.
+ */
 public class DTOCar {
-
 
     private Integer id;
     private String make;
@@ -15,16 +17,11 @@ public class DTOCar {
     private double price;
     private Condition condition;
     private ServiceStatus serviceStatus;
-
-    public String getSeller() {
-        return seller;
-    }
-
-    public void setSeller(String seller) {
-        this.seller = seller;
-    }
-
     private String seller;
+
+    public String getSeller() { return seller; }
+
+    public void setSeller(String seller) { this.seller = seller; }
 
     public Integer getId() {
         return id;
@@ -94,9 +91,7 @@ public class DTOCar {
         return condition;
     }
 
-    public void setCondition(Condition condition) {
-        this.condition = condition;
-    }
+    public void setCondition(Condition condition) { this.condition = condition; }
 
     public ServiceStatus getServiceStatus() {
         return serviceStatus;
@@ -104,5 +99,22 @@ public class DTOCar {
 
     public void setServiceStatus(ServiceStatus serviceStatus) {
         this.serviceStatus = serviceStatus;
+    }
+
+    public DTOCar() {
+    }
+
+    public DTOCar(Integer id, String make, String model, int year, String colour, double litre, int mileage, double price, Condition condition, ServiceStatus serviceStatus, String seller) {
+        this.id = id;
+        this.make = make;
+        this.model = model;
+        this.year = year;
+        this.colour = colour;
+        this.litre = litre;
+        this.mileage = mileage;
+        this.price = price;
+        this.condition = condition;
+        this.serviceStatus = serviceStatus;
+        this.seller = seller;
     }
 }
